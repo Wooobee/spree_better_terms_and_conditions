@@ -34,10 +34,10 @@ Spree::Order.class_eval do
       
       self.errors[:terms_and_conditions] << Spree.t('terms_and_conditions.must_be_accepted')
       if self.errors[:terms_and_conditions].empty?
-        true
+        return true
       else
         logger.debug "Not checked! Dont move"
-        false
+        return false
       end
       #self.errors[:terms_and_conditions].empty? ? return true : return false
       logger.debug "Terms checked: #{self.errors[:terms_and_conditions]}"
