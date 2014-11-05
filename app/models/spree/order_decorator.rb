@@ -6,10 +6,13 @@ Spree::Order.class_eval do
   insert_checkout_step :terms_and_conditions, :before => :confirm
 
   def valid_terms_and_conditions?
+    logger.debug "Terms and Conditions: #{terms_and_conditions}"
     unless terms_and_conditions == true
       # errors.add(:base, 'Terms and Conditions must be accepted!')
+      
       self.errors[:terms_and_conditions] << Spree.t('terms_and_conditions.must_be_accepted')
       self.errors[:terms_and_conditions].empty? ? true : false
+      logger.debug "Terms checked: #{self.errors[:terms_and_conditions]}"
     end
   end
 end
