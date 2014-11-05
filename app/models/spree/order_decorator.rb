@@ -30,7 +30,7 @@ Spree::Order.class_eval do
   def valid_terms_and_conditions?
     logger.debug "Terms and Conditions: #{terms_and_conditions}"
     unless terms_and_conditions == true
-      errors.add(:base, 'Terms and Conditions must be accepted!')
+      #errors.add(:base, 'Terms and Conditions must be accepted!')
       
       self.errors[:terms_and_conditions] << Spree.t('terms_and_conditions.must_be_accepted')
       if self.errors[:terms_and_conditions].empty?
