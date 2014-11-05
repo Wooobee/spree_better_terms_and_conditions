@@ -17,6 +17,11 @@ Spree::Order.class_eval do
   end
 end
 
+ # If true, causes the confirmation step to happen during the checkout process
+  def confirmation_required?
+    return true
+  end
+
 # Validate on state change
 Spree::Order.state_machine.before_transition :to => :confirm, :do => :valid_terms_and_conditions?
 
